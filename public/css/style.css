@@ -1,0 +1,43 @@
+body {
+	background-color: #232323;
+}
+
+
+h1{
+	display: flex;
+	justify-content: center;
+	color: white;
+}
+
+form{
+	display: flex;
+	justify-content: center;
+}
+
+textarea{
+	resize: none;
+}
+
+
+.card{
+	height: 400px;
+}
+
+#create {
+	padding: auto;
+	display: flex;
+	justify-content: center;
+	background-color: red;
+}
+
+#read{
+	background-color: orange;
+}
+
+#update{
+	background-color: green;
+}
+
+#delete{
+	background-color: blue;
+}
