@@ -7,6 +7,7 @@ h1{
 	display: flex;
 	justify-content: center;
 	color: white;
+	font-family: 'Luckiest Guy', cursive;
 }
 
 form{
@@ -15,6 +16,7 @@ form{
 }
 
 textarea{
+	outline: none;
 	resize: none;
 }
 
