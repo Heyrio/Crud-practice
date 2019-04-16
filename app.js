@@ -4,7 +4,10 @@ const express = require('express');
 const ejs = require('ejs');
 const app = express();
 const bodyParser = require('body-parser');
-const base = require('./base.js');
+const mongodb = require('mongodb');
+const MongoClient = mongodb.MongoClient;
+const URL = 'mongodb+srv://heyrio:<password>@cluster0-7cpbz.mongodb.net/test?retryWrites=true';
+const database = 'Crud-Data';
 
 
 
@@ -25,13 +28,22 @@ app.get('/',(req, res)=>{
 	
 })
 
-app.post('/',(req, res)=>{
-	var userName = req.body;
-	base.userDataFinal(userName);
-	res.render('index');
-});
-
 //Opens a port to listen on
 app.listen(3000,()=>{
 	console.log('Server is now running...')
+});
+
+  
+MongoClient.connect(URL, {useNewUrlParser: true}, (error, client)=>{
+    if(error){
+        return console.log('Could not connect to the database');
+    }
+	const db = client.db(database);
+	
+	app.post('/',(req, res)=>{
+		var userName = req.body.name;
+		db.collection('User').insertOne({ name: userName });
+		res.render('index');
+	});
+console.log('Database is connected...')
 });
